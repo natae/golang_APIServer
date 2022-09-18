@@ -3,7 +3,6 @@ package server
 import (
 	"apiserver/server/define"
 	"apiserver/server/logger"
-	"fmt"
 	"runtime"
 
 	"github.com/gofiber/fiber/v2"
@@ -15,7 +14,7 @@ func RecoverAndStackTraceMiddleware(c *fiber.Ctx) error {
 			stackTraceBuf := make([]byte, 1<<10)
 			runtime.Stack(stackTraceBuf, true)
 
-			logger.LogErrorF(fmt.Sprintf("PrintPanicStack: %v\n %s", r, stackTraceBuf))
+			logger.LogErrorF("PrintPanicStack: %v\n %s", r, stackTraceBuf)
 
 			c.Status(fiber.StatusInternalServerError).JSON(
 				define.BaseResponse{

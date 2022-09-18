@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"apiserver/server/errors"
 	"apiserver/server/model"
 )
 
@@ -9,6 +10,6 @@ type AccountRepository struct {
 }
 
 func (r *AccountRepository) Select(nickname string) (*model.Account, error) {
-	panic("Sorry")
-	//return nil, errors.New("Not implement")
+	//panic("Sorry")
+	return nil, errors.New("Not implement")
 }
