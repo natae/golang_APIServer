@@ -9,18 +9,15 @@ services:
       MYSQL_DATABASE: COMMON
     ports:
       - "3306:3306"
-    networks:
-      - default
     volumes:
       - ./mysql/InitDatabase.sql:/docker-entrypoint-initdb.d/1.sql:ro
     security_opt:
       - seccomp:unconfined
 
-  db-redis:
-    container_name: db-redis
-    image: redis:6.2
-    command: redis-server --port 6379
+  api-server:
+    container_name: api-server
+    image: api-server
+    build:
+      context: ../app
     ports:
-      - "6379:6379"
-    networks:
-      - default
+      - "8080:8080"
